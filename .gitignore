@@ -1,0 +1,16 @@
+# Java / Maven
+backend/target/
+*.class
+*.jar
+!**/.mvn/wrapper/*.jar
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Segredos e dados locais
+.env
+backend/uploads/
+uploads/
