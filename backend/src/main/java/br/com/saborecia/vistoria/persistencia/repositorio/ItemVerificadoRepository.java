@@ -26,6 +26,6 @@ public interface ItemVerificadoRepository extends JpaRepository<ItemVerificado, 
     List<Object[]> contarPorUnidadeEStatus();
 
     /** [codigoRegra, quantidade] dos motivos que reprovaram itens */
-    @Query("select m.codigoRegra, count(m) from MotivoValidacao m where m.severidade = 'REPROVA' group by m.codigoRegra order by count(m) desc")
+     @Query("select m.codigoRegra, count(distinct m.item) from MotivoValidacao m where m.severidade = 'REPROVA' group by m.codigoRegra order by count(distinct m.item) desc")
     List<Object[]> principaisMotivosDeReprovacao();
 }
