@@ -1,0 +1,41 @@
+# Sobe tudo com:  docker compose up --build
+# Front-end: http://localhost:8080   ·   API: http://localhost:8080/api
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: vistoria
+      POSTGRES_USER: vistoria
+      POSTGRES_PASSWORD: vistoria
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vistoria -d vistoria"]
+      interval: 5s
+      retries: 10
+
+  app:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/vistoria
+      DB_USER: vistoria
+      DB_PASSWORD: vistoria
+      IA_PROVEDOR: ${IA_PROVEDOR:-llm}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.openai.com/v1}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODELO: ${LLM_MODELO:-gpt-4o-mini}
+      LLM_ENVIAR_IMAGEM: ${LLM_ENVIAR_IMAGEM:-false}
+      DATA_REFERENCIA: ${DATA_REFERENCIA:-}
+    ports:
+      - "8080:8080"
+    volumes:
+      - uploads:/data/uploads
+
+volumes:
+  pgdata:
+  uploads:
