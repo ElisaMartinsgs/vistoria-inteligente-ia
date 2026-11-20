@@ -1,0 +1,90 @@
+spring:
+  application:
+    name: vistoria-inteligente
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/vistoria}
+    username: ${DB_USER:vistoria}
+    password: ${DB_PASSWORD:vistoria}
+  jpa:
+    hibernate:
+      ddl-auto: none              # o schema é criado e versionado pelo Flyway (db/migration)
+    open-in-view: false
+    properties:
+      hibernate.jdbc.time_zone: America/Recife
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+  jackson:
+    default-property-inclusion: always
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+logging:
+  level:
+    br.com.saborecia.vistoria: INFO
+
+vistoria:
+  # Data fixa para demonstração (yyyy-MM-dd). Deixe vazio para usar a data de hoje.
+  data-referencia: ${DATA_REFERENCIA:}
+  armazenamento:
+    diretorio: ${ARMAZENAMENTO_DIR:./uploads}
+  imagem:
+    largura-padrao: 1200          # px — as métricas de qualidade são comparáveis nessa largura
+    nitidez-minima: 40            # variância do Laplaciano; abaixo disso = tremida/borrada
+    brilho-minimo: 45             # 0..255; abaixo = escura
+    brilho-maximo: 240            # acima = estourada
+    contraste-minimo: 18          # desvio-padrão dos pixels
+    corrigir-perspectiva: true
+  ocr:
+    tessdata: ${TESSDATA_PREFIX:/usr/share/tesseract-ocr/5/tessdata}
+    idioma: por
+    psm: 6                        # 6 = bloco único de texto; 11 = texto esparso (fotos)
+    timeout-segundos: 30
+    max-paralelo: 2
+  ia:
+    # "llm" = qualquer API compatível com OpenAI (OpenAI, Gemini, Groq, OpenRouter, Ollama)
+    # "regex" = sem IA (palavras-chave + Regex), sem custo
+    provedor: ${IA_PROVEDOR:llm}
+    base-url: ${LLM_BASE_URL:https://api.openai.com/v1}
+    api-key: ${LLM_API_KEY:}
+    modelo: ${LLM_MODELO:gpt-4o-mini}
+    temperatura: 0
+    timeout-segundos: ${LLM_TIMEOUT:20}
+    tentativas: 3                 # 1 chamada + 2 novas tentativas (só para 429/5xx/timeout)
+    forcar-json: true             # response_format = json_object
+    enviar-imagem: ${LLM_ENVIAR_IMAGEM:false}   # true = modo multimodal (foto + texto do OCR)
+    confianca-minima: 0.7         # abaixo disso o item vai para revisão manual
+    prompt: classpath:prompts/extracao-item-v2.txt
+  regras:
+    dias-alerta-vencimento: 30
+
+---
+# Perfil "dev": banco H2 em memória (não precisa de PostgreSQL) — mvn spring-boot:run -Dspring-boot.run.profiles=dev
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:vistoria;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    br.com.saborecia.vistoria: DEBUG

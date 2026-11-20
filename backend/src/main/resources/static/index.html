@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f2a37">
+<title>Vistoria Inteligente — Sabor &amp; Cia</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topo">
+  <div class="marca">
+    <span class="logo" aria-hidden="true">🦺</span>
+    <div>
+      <h1>Vistoria Inteligente</h1>
+      <p>Segurança do trabalho · Sabor &amp; Cia</p>
+    </div>
+  </div>
+</header>
+
+<nav class="abas" role="tablist">
+  <button role="tab" class="aba ativa" data-aba="nova">Vistoria</button>
+  <button role="tab" class="aba" data-aba="historico">Histórico</button>
+  <button role="tab" class="aba" data-aba="revisao">Revisão <span id="contadorRevisao" class="contador" hidden></span></button>
+  <button role="tab" class="aba" data-aba="painel">Painel</button>
+</nav>
+
+<main>
+  <!-- ================= NOVA VISTORIA ================= -->
+  <section id="aba-nova" class="painel-aba ativa">
+    <div id="vistoriaAtual" class="faixa" hidden></div>
+
+    <form id="formItem" class="cartao" novalidate>
+      <label>Unidade
+        <select id="unidade" required></select>
+      </label>
+      <label>Técnico(a) responsável
+        <input id="tecnico" required autocomplete="name" placeholder="Seu nome">
+      </label>
+      <div class="linha">
+        <label>Item vistoriado
+          <select id="tipoItem"></select>
+        </label>
+        <label>Local
+          <select id="localizacao">
+            <option value="COZINHA">Cozinha</option>
+            <option value="SALAO">Salão</option>
+            <option value="SAIDA">Saída</option>
+            <option value="ESTOQUE">Estoque</option>
+            <option value="AREA_SERVICO">Área de serviço</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="foto" for="arquivo">
+        <input id="arquivo" type="file" accept="image/jpeg,image/png,application/pdf" capture="environment" required>
+        <img id="preview" alt="" hidden>
+        <span id="fotoTexto">📷 Tirar foto do item<br><small>ou escolher JPG, PNG ou PDF (até 10 MB)</small></span>
+      </label>
+
+      <button id="enviar" type="submit" class="botao primario">Validar item</button>
+      <p id="erroForm" class="erro" role="alert" hidden></p>
+    </form>
+
+    <div id="processando" class="cartao" hidden aria-live="polite">
+      <ol class="etapas">
+        <li data-etapa="0">Enviando a foto</li>
+        <li data-etapa="1">OpenCV — tratando a imagem</li>
+        <li data-etapa="2">Tesseract — lendo o texto</li>
+        <li data-etapa="3">IA — interpretando os dados</li>
+        <li data-etapa="4">Aplicando as regras</li>
+      </ol>
+    </div>
+
+    <div id="resultado" hidden></div>
+  </section>
+
+  <!-- ================= HISTÓRICO ================= -->
+  <section id="aba-historico" class="painel-aba">
+    <label class="filtro">Unidade
+      <select id="filtroUnidade"><option value="">Todas</option></select>
+    </label>
+    <div id="listaVistorias"></div>
+  </section>
+
+  <!-- ================= REVISÃO ================= -->
+  <section id="aba-revisao" class="painel-aba">
+    <p class="ajuda">Itens que a máquina não teve segurança para decidir. O supervisor confere a foto e decide.</p>
+    <label>Supervisor(a)
+      <input id="supervisor" placeholder="Seu nome" autocomplete="name">
+    </label>
+    <div id="listaRevisao"></div>
+  </section>
+
+  <!-- ================= PAINEL ================= -->
+  <section id="aba-painel" class="painel-aba">
+    <div id="painel"></div>
+  </section>
+</main>
+
+<template id="tplResultado">
+  <article class="cartao resultado">
+    <div class="selo"><span class="icone"></span><strong class="status"></strong></div>
+    <p class="resumo"></p>
+    <ul class="motivos"></ul>
+    <dl class="dados"></dl>
+    <details>
+      <summary>Ver o que cada etapa produziu</summary>
+      <div class="pipeline"></div>
+    </details>
+    <div class="acoes">
+      <button class="botao primario" data-acao="outro">+ Próximo item desta vistoria</button>
+      <button class="botao" data-acao="finalizar">Finalizar vistoria</button>
+    </div>
+  </article>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
