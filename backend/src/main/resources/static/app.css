@@ -108,3 +108,4 @@ pre { white-space: pre-wrap; word-break: break-word; background: #10161f; color:
 .tabela td, .tabela th { text-align: left; padding: 8px 4px; border-top: 1px solid var(--borda); }
 .tabela th { color: var(--suave); font-weight: 600; font-size: 12px; }
 .cartao h3 { margin-top: 0; }
+[hidden] { display: none !important; }
