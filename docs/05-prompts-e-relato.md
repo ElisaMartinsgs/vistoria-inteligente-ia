@@ -95,10 +95,27 @@ Arquivo: [`prompts/extracao-item-v2.txt`](../backend/src/main/resources/prompts/
 - Tratar a imagem antes do OCR faz diferença: com perspectiva corrigida, CLAHE e binarização, a confiança do OCR passou de 90% nas imagens de teste.
 - Falha de API externa é **normal**, não exceção: o sistema precisa de um plano B (fallback) e de registro (tabela `chamada_ia`).
 
-### Dificuldades
+### Relato pessoal (Elisa Martins)
+
+**O que eu fiz.** Parti de um problema que vivi de perto: a foto do extintor anexada ao checklist sem que o sistema reconhecesse a validade, o prazo de recarga estourando e a necessidade de ligar para o fornecedor. A partir disso, escrevi o documento de definição do projeto (problema, usuários, dados a extrair, regras de aprovação e reprovação, fluxo e MVP) e o README inicial. Usei um assistente de IA (Claude) para me auxiliar nos testes e na documentação, e também me ajudar a  revisar, organizar o repositório no GitHub (branch, pull request e merge), configurar o ambiente com Docker, rodar o sistema completo no meu computador e validar os três cenários da demonstração. Ao testar, conferi os resultados tela por tela e encontrei dois problemas que só apareceram com o app rodando de verdade: o painel contava os motivos de reprovação em vez das fotos reprovadas, e o contador da aba Revisão aparecia mesmo zerado. Corrigi os dois pelo GitHub e testei de novo. Também gravei um vídeo da demonstração como plano B. Por fim, entrevistei uma pessoa da área de RH, que confirmou a principal dor do projeto: a data do extintor digitada à mão, que deixou um extintor vencer sem ninguém perceber.
+
+ **O que foi mais difícil.** Minha maior dificuldade foi entender tecnologias novas, que eu ainda não conhecia, como OpenCV, Tesseract, Spring Boot e o uso de IA dentro de um sistema. Também foi a primeira vez que precisei baixar e configurar o Docker e usar o localhost para rodar e testar uma aplicação no meu próprio computador. No começo tudo parecia complicado, mas, fazendo passo a passo, consegui colocar o sistema para funcionar e entender o papel de cada parte.
+**O que eu aprendi.**
+- Cada tecnologia tem um papel claro: o OpenCV prepara a imagem, o Tesseract lê o texto, a IA interpreta e o código em Java decide. Separar esses papéis deixa o sistema mais confiável.
+- A IA ajuda muito, mas não deve decidir sozinha em um assunto sério como segurança do trabalho. Por isso as regras ficam no código, são testadas, e os casos duvidosos vão para uma pessoa.
+- Rodar o sistema de verdade é diferente de só ler o código: alguns erros só aparecem quando a gente usa o app como o usuário usaria.
+- Ouvir um usuário real muda a visão do problema: eu achava que a maior dor era o atraso do relatório, mas na entrevista a maior dor foi a digitação manual da data.
+- Usar IA no desenvolvimento exige revisão e transparência. Por isso registrei no repositório onde e como ela foi usada.
+
+**O que eu faria diferente.** Começaria a rodar o aplicativo no meu computador mais cedo, para ter mais tempo de testar e ajustar. Também faria a entrevista com usuários reais e coletaria fotos reais de etiquetas logo no início, antes de definir todas as regras.### Dificuldades
 
 - Configurar Tesseract/OpenCV em máquinas diferentes (resolvido com Docker).
 - Não ter fotos reais suficientes para medir a acurácia: as imagens de exemplo são simuladas. **Próximo passo:** coletar 20–30 fotos reais de etiquetas (US19 do backlog).
 - Equilibrar rigor e utilidade: reprovar demais irrita o técnico; aprovar demais é perigoso. A saída foi o terceiro status (REVISAO_MANUAL).
 
-> ✍️ **Para a equipe completar:** acrescentem aqui a experiência pessoal de vocês (o que cada um fez, o que foi mais difícil, o que fariam diferente). Essa parte precisa ser escrita por vocês.
+
+
+
+
+
+
