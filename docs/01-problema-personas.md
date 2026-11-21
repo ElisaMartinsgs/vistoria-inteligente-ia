@@ -90,14 +90,30 @@
   - Para resolver, era preciso **ligar pessoalmente para o fornecedor**.
 - **Dor validada:** falta de leitura automática da validade + falta de vínculo foto ↔ item → atraso e pendência.
 
-> ⚠️ **A preencher pela equipe:** o modelo de entrega pede pelo menos uma entrevista com humano. Recomendo complementar com uma entrevista curta (15 min, roteiro acima) com um(a) técnico(a) de segurança ou gerente de restaurante real e registrar aqui: nome/cargo (ou iniciais), data, respostas principais e quais hipóteses confirmou ou derrubou. **Não invente respostas.**
+- **Entrevistada:** M.E.A., jovem aprendiz de RH (escritório corporativo)
+- **Data:** 21/11/2026 · **Formato:** questionário com 12 perguntas (roteiro acima)
 
-| Campo | Resposta |
+| Tema | O que ela disse |
 |---|---|
-| Entrevistado(a) / cargo | _[preencher]_ |
-| Data | _[preencher]_ |
-| Respostas principais | _[preencher]_ |
-| Hipóteses confirmadas / refutadas | _[preencher]_ |
+| Como é hoje | Tudo digital: planilha e sistema interno, preenchidos pelo celular ou notebook. Papel quase não existe. A vistoria leva de 1h a 1h30, andar por andar. |
+| Relatório | Chega no mesmo dia, por e-mail e no painel. |
+| Evidência | Foto anexada no sistema, com registro de quem fez e quando. |
+| O que mais reprova | Extintor vencido, saída de emergência bloqueada (caixa, cadeira) e documentos vencidos (treinamento da brigada, laudos). |
+| Último problema | “Um extintor vencido que ninguém percebeu, porque a data é digitada na mão.” |
+| Extintor vencido | A planilha tem alerta, mas só funciona se a data estiver certa; avisar o fornecedor ainda é manual. |
+| Parte mais chata | Digitar as informações das etiquetas: muito dado e fácil de errar. |
+| O app ajudaria? | “Muito!” Tiraria a digitação manual da data, onde mais dá erro. |
+| Confiança | Confiaria se mostrasse o porquê (“vencido em tal data”); desconfiaria se a foto saísse ruim e o app respondesse com toda a certeza. |
+| Revisão humana | Quando a etiqueta estiver apagada, rasgada ou difícil de ler, ou o app estiver em dúvida. |
+| O que falta | Integração com o sistema da empresa, alerta automático ao fornecedor e relatório pronto para o gerente, com foto e data. |
+
+**Hipóteses:**
+- **H1 (atraso do relatório): refutada neste contexto.** O relatório chega no mesmo dia; a dor principal é a data digitada à mão e o aviso manual ao fornecedor.
+- **H2 (extintor vencido é o que mais dá pendência): confirmada.**
+- **H3 (uso pelo celular): confirmada em parte.** A vistoria já é feita pelo celular.
+- **Nova evidência:** foto ruim não pode ter resposta “com certeza”, e casos duvidosos devem ir para uma pessoa. Isso valida a regra de legibilidade e o status EM REVISÃO.
+
+**Limite:** a entrevistada trabalha em escritório, não em restaurante. Próximo passo: ouvir um técnico de segurança ou gerente de restaurante.
 
 ### Entrevista 2 — com agente inteligente (simulação de persona)
 
