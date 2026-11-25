@@ -107,7 +107,9 @@ Arquivo: [`prompts/extracao-item-v2.txt`](../backend/src/main/resources/prompts/
 - Ouvir um usuário real muda a visão do problema: eu achava que a maior dor era o atraso do relatório, mas na entrevista a maior dor foi a digitação manual da data.
 - Usar IA no desenvolvimento exige revisão e transparência. Por isso registrei no repositório onde e como ela foi usada.
 
-**O que eu faria diferente.** Começaria a rodar o aplicativo no meu computador mais cedo, para ter mais tempo de testar e ajustar. Também faria a entrevista com usuários reais e coletaria fotos reais de etiquetas logo no início, antes de definir todas as regras.### Dificuldades
+**O que eu faria diferente.** Começaria a rodar o aplicativo no meu computador mais cedo, para ter mais tempo de testar e ajustar. Também faria a entrevista com usuários reais e coletaria fotos reais de etiquetas logo no início, antes de definir todas as regras.
+
+### Dificuldades
 
 - Configurar Tesseract/OpenCV em máquinas diferentes (resolvido com Docker).
 - Não ter fotos reais suficientes para medir a acurácia: as imagens de exemplo são simuladas. **Próximo passo:** coletar 20–30 fotos reais de etiquetas (US19 do backlog).
