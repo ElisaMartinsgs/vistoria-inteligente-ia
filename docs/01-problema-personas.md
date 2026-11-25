@@ -66,11 +66,10 @@
 
 | # | Hipótese | Como validar | Situação |
 |---|---|---|---|
-| H1 | O maior atraso está entre a vistoria e a chegada do relatório ao gerente | Entrevista com técnico(a) e gerente | Validada parcialmente (relato da autora + entrevista com agente) — **confirmar na entrevista humana** |
-| H2 | Validade de extintor é o item que mais gera pendência | Perguntar "qual item mais reprova?" | Indício forte (caso real da autora) |
-| H3 | O técnico aceita usar o celular se levar menos de 10 s por item | Teste com o protótipo | A validar na demo |
-| H4 | O gerente prefere "o que fazer" a "qual norma foi violada" | Entrevista com gerente | A validar |
-
+| H1 | O maior atraso está entre a vistoria e a chegada do relatório ao gerente | Entrevista com técnico(a) e gerente | Refutada neste contexto (entrevista de 21/11: o relatório chega no mesmo dia; a dor principal é a data digitada à mão) |
+| H2 | Validade de extintor é o item que mais gera pendência | Perguntar "qual item mais reprova?" | Confirmada (caso real da autora + entrevista de 21/11) |
+| H3 | O técnico aceita usar o celular se levar menos de 10 s por item | Teste com o protótipo | Confirmada em parte (a vistoria já é feita pelo celular; o tempo por item ainda será medido) |
+| H4 | O gerente prefere "o que fazer" a "qual norma foi violada" | Entrevista com gerente | A validar (falta entrevistar um gerente de restaurante) |
 ### Roteiro de entrevista (humanos)
 
 1. Como é feita a vistoria hoje? Papel, planilha, sistema? Quanto tempo leva por unidade?
