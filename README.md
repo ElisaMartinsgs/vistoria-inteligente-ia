@@ -158,6 +158,12 @@ backend/src/main/java/br/com/saborecia/vistoria/
 └── servico/       Orquestração do pipeline e consultas
 ```
 
+## Autoria e uso de IA
+
+Projeto desenvolvido por **Elisa Martins** (CESAR School, ADS 2026.2 · Residência, etapa Grow Up).
+
+Um assistente de IA (Claude, da Anthropic) foi usado como apoio em código, testes, documentação e revisão, conforme a política de uso de IA da CESAR School (PO-CESAR-021). Todo o conteúdo foi revisado, executado e validado pela autora. O processo e os prompts estão descritos em [docs/05-prompts-e-relato.md](docs/05-prompts-e-relato.md).
+
 ## Tecnologias
 
 Java 17 · Spring Boot 3.3 · OpenCV 4.9 · Tesseract 5 (Tess4J) · PDFBox 3 · PostgreSQL 16 · Flyway · Docker · GitHub Actions · LLM via API compatível com OpenAI
